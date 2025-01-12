@@ -1,2 +1,2 @@
 # Spotify_Clone_REACT
- spotify clone made using React.js and Spotify Web API
+Web music player made using React.js and Spotify Web API
