@@ -14,7 +14,7 @@ function Sidebar() {
     <div className="sidebar">
       <img
         className="sidebar__logo"
-        src="https://www.edigitalagency.com.au/wp-content/uploads/Spotify-Logo-png-RGB-Black.png"
+        src="https://freepnglogo.com/images/all_img/1725820319spotify-logo-black.png"
         alt=""
       />
       <SidebarOption Icon={HomeIcon} option="Home" />
