@@ -4,7 +4,7 @@ import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import { useDataLayerValue } from './DataLayer';
 import { useNavigate } from 'react-router-dom';
 
-function SearchPage({ spotify }) {
+function SearchPage({ spotify, onShowNotification }) {
     const [{ }, dispatch] = useDataLayerValue();
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -37,7 +37,7 @@ function SearchPage({ spotify }) {
         try {
             const devices = await spotify.getMyDevices();
             if (devices.devices.length === 0) {
-                console.error("No active devices found");
+                onShowNotification("Please make sure you have Spotify open on your device (desktop app, web player, or mobile app) to play music.");
                 return;
             }
             
@@ -60,6 +60,7 @@ function SearchPage({ spotify }) {
             }
         } catch (error) {
             console.error("Error playing song:", error);
+            onShowNotification("Please make sure you have Spotify open on your device (desktop app, web player, or mobile app) to play music.");
         }
     };
 
