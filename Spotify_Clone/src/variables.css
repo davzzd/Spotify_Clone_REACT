@@ -1,0 +1,57 @@
+:root {
+    /* Primary Colors */
+    --primary-color: #ff4c68;
+    --primary-color-light: #ff6b6b;
+    --primary-color-dark: #ef8172;
+    
+    /* Secondary Colors */
+    --secondary-color: #1db954;
+    --secondary-color-light: #1ed760;
+    
+    /* Background Colors */
+    --bg-black: black;
+    --bg-white: white;
+    --bg-transparent: transparent;
+    
+    /* Overlay Colors */
+    --overlay-pink: rgba(255, 182, 193, 0.2);
+    --overlay-pink-light: rgba(255, 182, 193, 0.3);
+    --overlay-pink-dark: rgba(255, 182, 193, 0.4);
+    --overlay-red: rgba(249, 13, 60, 0.311);
+    --overlay-red-light: rgba(249, 13, 60, 0.594);
+    --overlay-red-dark: rgba(239, 7, 61, 0.521);
+    --overlay-white: rgba(255, 255, 255, 0.1);
+    --overlay-white-light: rgba(255, 255, 255, 0.2);
+    --overlay-white-dark: rgba(255, 255, 255, 0.3);
+    --overlay-white-darker: rgba(255, 255, 255, 0.4);
+    --overlay-black: rgba(0, 0, 0, 0.3);
+    --overlay-black-light: rgba(0, 0, 0, 0.2);
+    --overlay-black-dark: rgba(0, 0, 0, 0.5);
+    
+    /* Text Colors */
+    --text-white: white;
+    --text-white-transparent: rgba(255, 255, 255, 0.7);
+    --text-white-transparent-light: rgba(255, 255, 255, 0.8);
+    --text-white-transparent-dark: rgba(255, 255, 255, 0.9);
+    --text-black: #000000;
+    --text-black-transparent: rgba(0, 0, 0, 0.7);
+    --text-gray: #b3b3b3;
+    --text-gray-light: #ffffff;
+    --text-gray-dark: #0a0a0a78;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(300deg, var(--primary-color), var(--primary-color-dark), var(--primary-color-light));
+    --gradient-secondary: linear-gradient(300deg, #00bfff, var(--primary-color), var(--primary-color-dark));
+    
+    /* Sidebar Colors */
+    --sidebar-red: rgba(228, 53, 82, 0.614);
+    --sidebar-red-light: rgba(173, 19, 45, 0.692);
+    --sidebar-red-dark: rgba(173, 19, 45, 0.8);
+    
+    /* Footer Colors */
+    --footer-red: rgba(155, 20, 20, 0.619);
+    
+    /* Button Colors */
+    --button-blue: #3287aede;
+    --button-red: #ec2251;
+} 

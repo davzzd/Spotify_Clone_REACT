@@ -2,7 +2,7 @@
     padding: 20px;
     height: calc(100vh - 90px);
     overflow-y: auto;
-    background: rgba(147, 17, 17, 0);
+    background: var(--overlay-red);
     backdrop-filter: blur(10px);
     border-radius: 10px;
     margin: 10px;
@@ -16,7 +16,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    color: #fff;
+    color: var(--text-white);
 }
 
 .artist_header {
@@ -24,7 +24,7 @@
     gap: 30px;
     margin-bottom: 40px;
     padding: 20px;
-    background: rgba(249, 13, 60, 0.594);
+    background: var(--overlay-red-light);
     border-radius: 10px;
 }
 
@@ -33,14 +33,14 @@
     height: 232px;
     object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px var(--overlay-black);
 }
 
 .artist_info {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    color: #fff;
+    color: var(--text-white);
 }
 
 .artist_info h1 {
@@ -50,7 +50,7 @@
 
 .artist_meta {
     font-size: 1.2rem;
-    color: #b3b3b3;
+    color: var(--text-gray);
     margin: 0 0 20px 0;
 }
 
@@ -58,8 +58,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background: #3287aede;
-    color: #fff;
+    background: var(--button-blue);
+    color: var(--text-white);
     border: none;
     border-radius: 20px;
     padding: 10px 30px;
@@ -70,17 +70,17 @@
 
 .play_button:hover {
     transform: scale(1.05);
-    background: #ec2251;
+    background: var(--button-red);
 }
 
 .top_tracks {
     padding: 20px;
-    background: rgba(249, 13, 60, 0.594);
+    background: var(--overlay-red-light);
     border-radius: 10px;
 }
 
 .top_tracks h2 {
-    color: #fff;
+    color: var(--text-white);
     margin: 0 0 20px 0;
     font-size: 1.5rem;
 }
@@ -101,13 +101,13 @@
 }
 
 .track_item:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--overlay-white);
 }
 
 .track_number {
     width: 30px;
     text-align: center;
-    color: #00000081;
+    color: var(--text-black-transparent);
 }
 
 .track_info {
@@ -117,17 +117,17 @@
 
 .track_info h4 {
     margin: 0;
-    color: #ffffff;
+    color: var(--text-white);
 }
 
 .track_info p {
     margin: 5px 0 0 0;
-    color: #000000ac;
+    color: var(--text-black-transparent);
     font-size: 0.9rem;
 }
 
 .track_duration {
-    color: #0000007b;
+    color: var(--text-black-transparent);
     font-size: 0.9rem;
 }
 
@@ -137,17 +137,17 @@
 }
 
 .artist_page::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--overlay-white);
     border-radius: 4px;
 }
 
 .artist_page::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--overlay-white-dark);
     border-radius: 4px;
 }
 
 .artist_page::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: var(--overlay-white-darker);
 }
 
 /* Media Queries */

@@ -3,7 +3,7 @@
   bottom: 0;
   height: 90px;
   width: 100%;
-  background: rgba(155, 20, 20, 0.619);
+  background: var(--footer-red);
   backdrop-filter: blur(5px);
   padding: 0 20px;
   display: flex;
@@ -16,14 +16,14 @@
   flex: 0.3;
   display: flex;
   align-items: center;
-  color: white;
+  color: var(--text-white);
   max-width: 300px;
 }
 
 .footer_center {
   flex: 0.4;
   padding: 0 100px;
-  color: white;
+  color: var(--text-white);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  color: white;
+  color: var(--text-white);
   padding-right: 20px;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .footer_green {
-  color: #ff4c68;
+  color: var(--primary-color);
 }
 
 .footer_icon:hover,
@@ -72,7 +72,7 @@
 }
 
 .footer_right * .MuiSlider-root {
-  color: #ff4c68;
+  color: var(--primary-color);
 }
 
 .footer_icon_disabled {

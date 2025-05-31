@@ -3,7 +3,7 @@
     min-width: 230px;
     max-width: 230px;
     padding: 0 10px;
-    background-color: rgba(228, 53, 82, 0.614);
+    background-color: var(--sidebar-red);
     backdrop-filter: blur(10px);
     overflow-y: auto;
     flex-shrink: 0;
@@ -16,20 +16,20 @@
     top: 20px;
     left: 20px;
     z-index: 1001;
-    background: rgba(173, 19, 45, 0.692);
+    background: var(--sidebar-red-light);
     border: none;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     cursor: pointer;
-    color: white;
+    color: var(--text-white);
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px var(--overlay-black-light);
     transition: all 0.3s ease;
 }
 
 .mobile_menu_button:hover {
-    background: rgba(173, 19, 45, 0.8);
+    background: var(--sidebar-red-dark);
     transform: scale(1.1);
 }
 
@@ -40,7 +40,7 @@
 }
 
 .sidebar__title {
-    color: white;
+    color: var(--text-white);
     margin-left: 10px;
     padding: 5px;
     font-size: 12px;
@@ -52,16 +52,16 @@
 }
 
 .sidebar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--overlay-white);
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255, 182, 193, 0.3);
+    background: var(--overlay-pink-light);
     border-radius: 3px;
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 182, 193, 0.4);
+    background: var(--overlay-pink-dark);
 }
 
 /* Media Queries */
@@ -95,7 +95,7 @@
         min-width: 250px;
         max-width: 250px;
         padding: 0 10px;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 0 10px var(--overlay-black-light);
     }
 
     .sidebar.mobile_open {

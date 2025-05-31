@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './variables.css';
 import './main.css';
 import App from './App';
 import { DataLayer } from './DataLayer';

@@ -2,7 +2,7 @@
     padding: 20px;
     height: calc(100vh - 90px);
     overflow-y: auto;
-    background: rgba(249, 13, 60, 0.311);
+    background: var(--overlay-red);
     backdrop-filter: blur(10px);
     border-radius: 10px;
     margin: 10px;
@@ -16,7 +16,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    color: #fff;
+    color: var(--text-white);
 }
 
 .album_header {
@@ -24,7 +24,7 @@
     gap: 30px;
     margin-bottom: 40px;
     padding: 20px;
-    background: rgba(239, 7, 61, 0.521);
+    background: var(--overlay-red-dark);
     border-radius: 10px;
 }
 
@@ -33,14 +33,14 @@
     height: 232px;
     object-fit: cover;
     border-radius: 5px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px var(--overlay-black);
 }
 
 .album_info {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    color: #fff;
+    color: var(--text-white);
 }
 
 .album_info h1 {
@@ -50,13 +50,13 @@
 
 .album_artist {
     font-size: 1.2rem;
-    color: #ffffff;
+    color: var(--text-white);
     margin: 0 0 10px 0;
 }
 
 .album_meta {
     font-size: 0.9rem;
-    color: #0a0a0a78;
+    color: var(--text-gray-dark);
     margin: 0 0 20px 0;
 }
 
@@ -64,8 +64,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background: #1db954;
-    color: #fff;
+    background: var(--secondary-color);
+    color: var(--text-white);
     border: none;
     border-radius: 20px;
     padding: 10px 30px;
@@ -77,14 +77,14 @@
 
 .play_button:hover {
     transform: scale(1.05);
-    background: #1ed760;
+    background: var(--secondary-color-light);
 }
 
 .album_tracks {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background: rgba(239, 7, 61, 0.521);
+    background: var(--overlay-red-dark);
     border-radius: 10px;
 }
 
@@ -98,13 +98,13 @@
 }
 
 .track_item:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--overlay-white);
 }
 
 .track_number {
     width: 30px;
     text-align: center;
-    color: #b3b3b3;
+    color: var(--text-gray);
 }
 
 .track_info {
@@ -114,17 +114,17 @@
 
 .track_info h4 {
     margin: 0;
-    color: #fff;
+    color: var(--text-white);
 }
 
 .track_info p {
     margin: 5px 0 0 0;
-    color: #b3b3b3;
+    color: var(--text-gray);
     font-size: 0.9rem;
 }
 
 .track_duration {
-    color: #b3b3b3;
+    color: var(--text-gray);
     font-size: 0.9rem;
 }
 
@@ -134,17 +134,17 @@
 }
 
 .album_page::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--overlay-white);
     border-radius: 4px;
 }
 
 .album_page::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--overlay-white-dark);
     border-radius: 4px;
 }
 
 .album_page::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: var(--overlay-white-darker);
 }
 
 /* Media Queries */

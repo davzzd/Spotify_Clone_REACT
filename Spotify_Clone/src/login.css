@@ -2,7 +2,8 @@
     display: grid;
     place-items: center;
     height: 100vh;
-    background-color: black;
+    background-color: var(--bg-black);
+    color: var(--text-white);
 }
 
  .login > img{
@@ -12,8 +13,8 @@
  .login > a{
     padding: 20px;
     border-radius: 99px;
-    background-color: #1db954;
+    background-color: var(--secondary-color);
     font-weight: 880;
-    color: white;
+    color: var(--text-white);
     text-decoration: none;
  }
