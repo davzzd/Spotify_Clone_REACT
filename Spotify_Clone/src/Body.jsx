@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Body.css";
 import Header from "./Header";
 import { useDataLayerValue } from "./DataLayer";
@@ -6,9 +6,11 @@ import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import SongRow from "./SongRow";
+import Notification from "./Notification";
 
 function Body({ spotify }) {
   const [{ discover_weekly }, dispatch] = useDataLayerValue();
+  const [showNotification, setShowNotification] = useState(false);
 
   const playPlaylist = () => {
     if (!discover_weekly?.uri) return;
@@ -28,25 +30,44 @@ function Body({ spotify }) {
             playing: true,
           });
         });
+      })
+      .catch(() => {
+        setShowNotification(true);
       });
   };
 
   const playSong = (id) => {
     spotify
-      .play({
-        uris: [`spotify:track:${id}`],
+      .getMyDevices()
+      .then((devices) => {
+        if (devices.devices.length === 0) {
+          setShowNotification(true);
+          return;
+        }
+        
+        const activeDevice = devices.devices.find(device => device.is_active) || devices.devices[0];
+        
+        return spotify.transferMyPlayback([activeDevice.id], { play: false })
+          .then(() => {
+            return spotify.play({
+              uris: [`spotify:track:${id}`],
+            });
+          })
+          .then((res) => {
+            spotify.getMyCurrentPlayingTrack().then((r) => {
+              dispatch({
+                type: "SET_ITEM",
+                item: r.item,
+              });
+              dispatch({
+                type: "SET_PLAYING",
+                playing: true,
+              });
+            });
+          });
       })
-      .then((res) => {
-        spotify.getMyCurrentPlayingTrack().then((r) => {
-          dispatch({
-            type: "SET_ITEM",
-            item: r.item,
-          });
-          dispatch({
-            type: "SET_PLAYING",
-            playing: true,
-          });
-        });
+      .catch(() => {
+        setShowNotification(true);
       });
   };
 
@@ -74,6 +95,12 @@ function Body({ spotify }) {
           <SongRow key={index} playSong={playSong} track={item.track} />
         ))}
       </div>
+
+      <Notification 
+        isVisible={showNotification}
+        message="Please make sure you have Spotify open on your device (desktop app, web player, or mobile app) to play music."
+        onClose={() => setShowNotification(false)}
+      />
     </div>
   );
 }
