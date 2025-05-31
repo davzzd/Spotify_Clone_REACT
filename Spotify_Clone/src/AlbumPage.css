@@ -1,0 +1,146 @@
+.album_page {
+    padding: 20px;
+    height: calc(100vh - 180px);
+    overflow-y: auto;
+    background: rgba(249, 13, 60, 0.311);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.album_page.loading,
+.album_page.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.album_header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(239, 7, 61, 0.521);
+    border-radius: 10px;
+}
+
+.album_header img {
+    width: 232px;
+    height: 232px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.album_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+}
+
+.album_info h1 {
+    font-size: 3rem;
+    margin: 0 0 10px 0;
+}
+
+.album_artist {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+}
+
+.album_meta {
+    font-size: 0.9rem;
+    color: #0a0a0a78;
+    margin: 0 0 20px 0;
+}
+
+.play_button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #1db954;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 200px;
+}
+
+.play_button:hover {
+    transform: scale(1.05);
+    background: #1ed760;
+}
+
+.album_tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(239, 7, 61, 0.521);
+    border-radius: 10px;
+}
+
+.track_item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.track_item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.track_number {
+    width: 30px;
+    text-align: center;
+    color: #b3b3b3;
+}
+
+.track_info {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.track_info h4 {
+    margin: 0;
+    color: #fff;
+}
+
+.track_info p {
+    margin: 5px 0 0 0;
+    color: #b3b3b3;
+    font-size: 0.9rem;
+}
+
+.track_duration {
+    color: #b3b3b3;
+    font-size: 0.9rem;
+}
+
+/* Custom scrollbar */
+.album_page::-webkit-scrollbar {
+    width: 8px;
+}
+
+.album_page::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.album_page::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.album_page::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+} 

@@ -1,0 +1,149 @@
+.artist_page {
+    padding: 20px;
+    height: calc(100vh - 180px);
+    overflow-y: auto;
+    background: rgba(147, 17, 17, 0);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.artist_page.loading,
+.artist_page.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.artist_header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(249, 13, 60, 0.594);
+    border-radius: 10px;
+}
+
+.artist_header img {
+    width: 232px;
+    height: 232px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.artist_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+}
+
+.artist_info h1 {
+    font-size: 3rem;
+    margin: 0 0 10px 0;
+}
+
+.artist_meta {
+    font-size: 1.2rem;
+    color: #b3b3b3;
+    margin: 0 0 20px 0;
+}
+
+.play_button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #3287aede;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.play_button:hover {
+    transform: scale(1.05);
+    background: #ec2251;
+}
+
+.top_tracks {
+    padding: 20px;
+    background: rgba(249, 13, 60, 0.594);
+    border-radius: 10px;
+}
+
+.top_tracks h2 {
+    color: #fff;
+    margin: 0 0 20px 0;
+    font-size: 1.5rem;
+}
+
+.tracks_list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.track_item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.track_item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.track_number {
+    width: 30px;
+    text-align: center;
+    color: #00000081;
+}
+
+.track_info {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.track_info h4 {
+    margin: 0;
+    color: #ffffff;
+}
+
+.track_info p {
+    margin: 5px 0 0 0;
+    color: #000000ac;
+    font-size: 0.9rem;
+}
+
+.track_duration {
+    color: #0000007b;
+    font-size: 0.9rem;
+}
+
+/* Custom scrollbar */
+.artist_page::-webkit-scrollbar {
+    width: 8px;
+}
+
+.artist_page::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.artist_page::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.artist_page::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+} 

@@ -1,44 +1,37 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchPage.css';
-import SearchIcon from '@mui/icons-material/Search';
-import { useDataLayerValue } from './DataLayer';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
+import { useDataLayerValue } from './DataLayer';
+import { useNavigate } from 'react-router-dom';
 
 function SearchPage({ spotify }) {
-    const [{ user }, dispatch] = useDataLayerValue();
+    const [{ }, dispatch] = useDataLayerValue();
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [searchType, setSearchType] = useState('track'); // track, artist, or album
-    const [isPlaying, setIsPlaying] = useState(false);
-    const searchRef = useRef(null);
+    const [searchType, setSearchType] = useState('track');
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        return () => {
-            // Cleanup if needed
-        };
-    }, []);
-
-    const handleSearch = async (e) => {
-        const value = e.target.value;
-        setSearchTerm(value);
-        
-        if (value.length > 2) {
-            try {
-                const response = await spotify.search(value, [searchType], { limit: 10 });
-                if (searchType === 'track') {
-                    setSearchResults(response.tracks.items);
-                } else if (searchType === 'artist') {
-                    setSearchResults(response.artists.items);
-                } else if (searchType === 'album') {
-                    setSearchResults(response.albums.items);
-                }
-            } catch (error) {
-                console.error('Error searching:', error);
+        const searchSpotify = async () => {
+            if (searchTerm.length < 3) {
+                setSearchResults([]);
+                return;
             }
-        } else {
-            setSearchResults([]);
-        }
-    };
+
+            setIsLoading(true);
+            try {
+                const response = await spotify.search(searchTerm, [searchType], { limit: 20 });
+                setSearchResults(response[`${searchType}s`].items);
+            } catch (error) {
+                console.error('Error searching Spotify:', error);
+            }
+            setIsLoading(false);
+        };
+
+        const timeoutId = setTimeout(searchSpotify, 500);
+        return () => clearTimeout(timeoutId);
+    }, [searchTerm, searchType, spotify]);
 
     const playSong = async (uri) => {
         try {
@@ -53,7 +46,6 @@ function SearchPage({ spotify }) {
             await new Promise(resolve => setTimeout(resolve, 300));
             
             await spotify.play({ uris: [uri] });
-            setIsPlaying(true);
             
             const currentTrack = await spotify.getMyCurrentPlayingTrack();
             if (currentTrack?.item) {
@@ -71,83 +63,90 @@ function SearchPage({ spotify }) {
         }
     };
 
-    const renderSearchResults = () => {
-        if (searchResults.length === 0) return null;
+    const handleItemClick = (item) => {
+        if (searchType === 'track') {
+            playSong(item.uri);
+        } else if (searchType === 'album') {
+            navigate(`/album/${item.id}`);
+        } else if (searchType === 'artist') {
+            navigate(`/artist/${item.id}`);
+        }
+    };
 
-        return (
-            <div className="search_results_container">
-                {searchResults.map((item) => (
-                    <div
-                        key={item.id}
-                        className="search_result_item"
-                        onClick={() => searchType === 'track' && playSong(item.uri)}
-                    >
-                        <img 
-                            src={searchType === 'track' ? item.album.images[0]?.url : 
-                                 searchType === 'artist' ? item.images[0]?.url :
-                                 item.images[0]?.url} 
-                            alt={item.name} 
-                        />
-                        <div className="search_result_info">
-                            <h4>{item.name}</h4>
-                            <p>
-                                {searchType === 'track' && item.artists.map(artist => artist.name).join(', ')}
-                                {searchType === 'artist' && `${item.followers.total.toLocaleString()} followers`}
-                                {searchType === 'album' && item.artists.map(artist => artist.name).join(', ')}
-                            </p>
-                        </div>
-                        {searchType === 'track' && (
-                            <PlayCircleFilledIcon 
-                                className="search_play_button"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    playSong(item.uri);
-                                }}
-                            />
-                        )}
-                    </div>
-                ))}
+    const renderSearchResults = () => {
+        if (isLoading) {
+            return <div className="loading">Loading...</div>;
+        }
+
+        if (searchResults.length === 0 && searchTerm.length >= 3) {
+            return <div className="no_results">No results found</div>;
+        }
+
+        return searchResults.map((item) => (
+            <div
+                key={item.id}
+                className="search_result_item"
+                onClick={() => handleItemClick(item)}
+            >
+                <img
+                    src={item.images?.[0]?.url || item.album?.images?.[0]?.url}
+                    alt={item.name}
+                />
+                <div className="result_info">
+                    <h4>{item.name}</h4>
+                    <p>
+                        {searchType === 'track'
+                            ? item.artists.map(artist => artist.name).join(', ')
+                            : searchType === 'album'
+                                ? item.artists.map(artist => artist.name).join(', ')
+                                : `${item.followers?.total.toLocaleString()} followers`}
+                    </p>
+                </div>
+                {searchType === 'track' && (
+                    <button className="search_play_button">
+                        <PlayCircleFilledIcon />
+                    </button>
+                )}
             </div>
-        );
+        ));
     };
 
     return (
         <div className="search_page">
-            <div className="search_header">
-                <h1>Search for any artist, song, or album</h1>
-                <div className="search_types">
-                    <button 
-                        className={searchType === 'track' ? 'active' : ''} 
-                        onClick={() => setSearchType('track')}
-                    >
-                        Songs
-                    </button>
-                    <button 
-                        className={searchType === 'artist' ? 'active' : ''} 
-                        onClick={() => setSearchType('artist')}
-                    >
-                        Artists
-                    </button>
-                    <button 
-                        className={searchType === 'album' ? 'active' : ''} 
-                        onClick={() => setSearchType('album')}
-                    >
-                        Albums
-                    </button>
-                </div>
+            <h1 className="search_heading">Search for any song, artist, or album</h1>
+            <div className="search_types">
+                <button
+                    className={searchType === 'track' ? 'active' : ''}
+                    onClick={() => setSearchType('track')}
+                >
+                    Songs
+                </button>
+                <button
+                    className={searchType === 'artist' ? 'active' : ''}
+                    onClick={() => setSearchType('artist')}
+                >
+                    Artists
+                </button>
+                <button
+                    className={searchType === 'album' ? 'active' : ''}
+                    onClick={() => setSearchType('album')}
+                >
+                    Albums
+                </button>
             </div>
 
             <div className="search_bar_container">
-                <SearchIcon />
                 <input
-                    placeholder={`Search for ${searchType}s...`}
                     type="text"
+                    placeholder={`Search for ${searchType}s...`}
                     value={searchTerm}
-                    onChange={handleSearch}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
 
-            {renderSearchResults()}
+            <div className="search_results_container">
+                {renderSearchResults()}
+            </div>
         </div>
     );
 }

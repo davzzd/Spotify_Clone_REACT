@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Login from './login';
 import { getTokenFromUrl } from "./spotify";
@@ -10,11 +10,16 @@ import SearchPage from './SearchPage';
 import Body from './Body';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
+import AlbumPage from './AlbumPage';
+import ArtistPage from './ArtistPage';
+import Notification from './Notification';
 
 const spotify = new SpotifyWebApi();
 
 function App() {
   const [{ token }, dispatch] = useDataLayerValue();
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState('');
 
   useEffect(() => {
     const hash = getTokenFromUrl();
@@ -73,6 +78,11 @@ function App() {
     console.log("i have a token");
   }, [token, dispatch]);
 
+  const showGlobalNotification = (message) => {
+    setNotificationMessage(message);
+    setShowNotification(true);
+  };
+
   return (
     <div className="app">
       {token ? (
@@ -80,11 +90,18 @@ function App() {
           <div className="app_body">
             <Sidebar spotify={spotify} />
             <Routes>
-              <Route path="/" element={<Body spotify={spotify} />} />
-              <Route path="/search" element={<SearchPage spotify={spotify} />} />
+              <Route path="/" element={<Body spotify={spotify} onShowNotification={showGlobalNotification} />} />
+              <Route path="/search" element={<SearchPage spotify={spotify} onShowNotification={showGlobalNotification} />} />
+              <Route path="/album/:id" element={<AlbumPage spotify={spotify} onShowNotification={showGlobalNotification} />} />
+              <Route path="/artist/:id" element={<ArtistPage spotify={spotify} onShowNotification={showGlobalNotification} />} />
             </Routes>
           </div>
           <Footer spotify={spotify} />
+          <Notification 
+            isVisible={showNotification}
+            message={notificationMessage}
+            onClose={() => setShowNotification(false)}
+          />
         </Router>
       ) : (
         <Login />

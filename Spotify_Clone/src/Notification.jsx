@@ -1,17 +1,21 @@
 import React from 'react';
 import './Notification.css';
 
-function Notification({ message, isVisible, onClose }) {
-  if (!isVisible) return null;
+function Notification({ isVisible, message, onClose }) {
+    if (!isVisible) return null;
 
-  return (
-    <div className="notification-overlay">
-      <div className="notification">
-        <p>{message}</p>
-        <button onClick={onClose}>Got it</button>
-      </div>
-    </div>
-  );
+    return (
+        <div className="notification_overlay">
+            <div className="notification">
+                <div className="notification_content">
+                    <p className="notification_message">{message}</p>
+                    <button className="notification_button" onClick={onClose}>
+                        Got it
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default Notification; 

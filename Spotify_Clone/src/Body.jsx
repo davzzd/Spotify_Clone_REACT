@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Body.css";
 import Header from "./Header";
 import { useDataLayerValue } from "./DataLayer";
@@ -6,11 +6,9 @@ import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import SongRow from "./SongRow";
-import Notification from "./Notification";
 
-function Body({ spotify }) {
+function Body({ spotify, onShowNotification }) {
   const [{ discover_weekly }, dispatch] = useDataLayerValue();
-  const [showNotification, setShowNotification] = useState(false);
 
   const playPlaylist = () => {
     if (!discover_weekly?.uri) return;
@@ -32,7 +30,7 @@ function Body({ spotify }) {
         });
       })
       .catch(() => {
-        setShowNotification(true);
+        onShowNotification("Please make sure you have Spotify open on your device (desktop app, web player, or mobile app) to play music.");
       });
   };
 
@@ -41,7 +39,7 @@ function Body({ spotify }) {
       .getMyDevices()
       .then((devices) => {
         if (devices.devices.length === 0) {
-          setShowNotification(true);
+          onShowNotification("Please make sure you have Spotify open on your device (desktop app, web player, or mobile app) to play music.");
           return;
         }
         
@@ -67,7 +65,7 @@ function Body({ spotify }) {
           });
       })
       .catch(() => {
-        setShowNotification(true);
+        onShowNotification("Please make sure you have Spotify open on your device (desktop app, web player, or mobile app) to play music.");
       });
   };
 
@@ -95,12 +93,6 @@ function Body({ spotify }) {
           <SongRow key={index} playSong={playSong} track={item.track} />
         ))}
       </div>
-
-      <Notification 
-        isVisible={showNotification}
-        message="Please make sure you have Spotify open on your device (desktop app, web player, or mobile app) to play music."
-        onClose={() => setShowNotification(false)}
-      />
     </div>
   );
 }

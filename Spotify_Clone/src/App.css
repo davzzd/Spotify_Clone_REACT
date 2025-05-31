@@ -1,5 +1,8 @@
 .app {
     height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
     background: linear-gradient(300deg, #ff4c68, #ef8172, #ff6b6b);
     display: flex;
     flex-direction: column;
@@ -7,8 +10,10 @@
 
 .app_body {
     display: flex;
-    flex: 1;
+    height: calc(100vh - 90px);
+    width: 100%;
     overflow: hidden;
+    position: relative;
 }
 
 /* Ensure the body content takes up the remaining space */
@@ -18,4 +23,17 @@
     padding: 30px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .app_body {
+        height: calc(100vh - 80px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .app_body {
+        height: calc(100vh - 70px);
+    }
 }
