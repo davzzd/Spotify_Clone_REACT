@@ -12,6 +12,7 @@ import Sidebar from './Sidebar';
 import Footer from './Footer';
 import AlbumPage from './AlbumPage';
 import ArtistPage from './ArtistPage';
+import Library from './Library';
 import Notification from './Notification';
 
 const spotify = new SpotifyWebApi();
@@ -92,6 +93,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Body spotify={spotify} onShowNotification={showGlobalNotification} />} />
               <Route path="/search" element={<SearchPage spotify={spotify} onShowNotification={showGlobalNotification} />} />
+              <Route path="/library" element={<Library spotify={spotify} />} />
               <Route path="/album/:id" element={<AlbumPage spotify={spotify} onShowNotification={showGlobalNotification} />} />
               <Route path="/artist/:id" element={<ArtistPage spotify={spotify} onShowNotification={showGlobalNotification} />} />
             </Routes>

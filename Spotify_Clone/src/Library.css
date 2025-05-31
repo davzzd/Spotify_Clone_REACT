@@ -1,0 +1,147 @@
+.library_page {
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.library_heading {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.library_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.library_item {
+    background: rgba(255, 182, 193, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.library_item:hover {
+    background: rgba(255, 182, 193, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.3);
+}
+
+.library_item_image {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.library_item_image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.library_item_info {
+    color: white;
+}
+
+.library_item_info h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.library_item_info p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom scrollbar */
+.library_page::-webkit-scrollbar {
+    width: 8px;
+}
+
+.library_page::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.library_page::-webkit-scrollbar-thumb {
+    background: rgba(255, 192, 203, 0.3);
+    border-radius: 4px;
+}
+
+.library_page::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 192, 203, 0.4);
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .library_page {
+        padding: 15px;
+    }
+
+    .library_grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .library_item {
+        padding: 12px;
+    }
+
+    .library_item_info h3 {
+        font-size: 14px;
+    }
+
+    .library_item_info p {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .library_page {
+        padding: 10px;
+    }
+
+    .library_grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .library_item {
+        padding: 10px;
+    }
+
+    .library_item_info h3 {
+        font-size: 13px;
+    }
+
+    .library_item_info p {
+        font-size: 11px;
+    }
+} 

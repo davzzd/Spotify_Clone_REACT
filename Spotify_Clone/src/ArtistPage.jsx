@@ -112,7 +112,7 @@ function ArtistPage({ spotify }) {
                         {artist.followers.total.toLocaleString()} followers
                     </p>
                     <button className="play_button" onClick={playArtistTopTracks}>
-                        <PlayCircleFilledIcon /> Play Top Tracks
+                        <PlayCircleFilledIcon /> Play 
                     </button>
                 </div>
             </div>
