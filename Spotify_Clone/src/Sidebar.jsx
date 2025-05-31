@@ -5,10 +5,28 @@ import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import { useDataLayerValue } from "./DataLayer";
+import { useNavigate } from 'react-router-dom';
 
-function Sidebar() {
+function Sidebar({ spotify }) {
   const [{ playlists }, dispatch] = useDataLayerValue();
-  console.log(playlists); 
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
+  const handlePlaylistClick = async (playlist) => {
+    try {
+      const response = await spotify.getPlaylist(playlist.id);
+      dispatch({
+        type: "SET_DISCOVER_WEEKLY",
+        discover_weekly: response,
+      });
+      navigate('/');
+    } catch (error) {
+      console.error("Error loading playlist:", error);
+    }
+  };
 
   return (
     <div className="sidebar">
@@ -17,17 +35,20 @@ function Sidebar() {
         src="https://freepnglogo.com/images/all_img/1725820319spotify-logo-black.png"
         alt=""
       />
-      <SidebarOption Icon={HomeIcon} option="Home" />
-      <SidebarOption Icon={SearchIcon} option="Search" />
-      <SidebarOption Icon={LibraryMusicIcon} option="Your Library" />
+      <SidebarOption Icon={HomeIcon} option="Home" onClick={() => handleNavigation('/')} />
+      <SidebarOption Icon={SearchIcon} option="Search" onClick={() => handleNavigation('/search')} />
+      <SidebarOption Icon={LibraryMusicIcon} option="Your Library" onClick={() => handleNavigation('/library')} />
       
       <br />
       <strong className="sidebar__title">PLAYLISTS</strong>
       <hr /> 
       {playlists?.items?.map((playlist) => (
-        <SidebarOption option={playlist.name} />
+        <SidebarOption 
+          key={playlist.id}
+          option={playlist.name} 
+          onClick={() => handlePlaylistClick(playlist)}
+        />
       ))}
-            
     </div>
   );
 }

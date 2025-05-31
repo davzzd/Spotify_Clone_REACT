@@ -1,0 +1,21 @@
+.app {
+    height: 100vh;
+    background: linear-gradient(300deg, #ff4c68, #ef8172, #ff6b6b);
+    display: flex;
+    flex-direction: column;
+}
+
+.app_body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Ensure the body content takes up the remaining space */
+.app_body > *:nth-child(2) {
+    flex: 1;
+    overflow-y: auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
