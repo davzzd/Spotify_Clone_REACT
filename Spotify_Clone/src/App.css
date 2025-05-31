@@ -10,10 +10,11 @@
 
 .app_body {
     display: flex;
-    height: 100vh;
+    height: calc(100vh - 90px);
     width: 100%;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box;
 }
 
 /* Ensure the body content takes up the remaining space */
@@ -24,16 +25,23 @@
     padding-bottom: 120px; /* Add padding to account for footer */
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    box-sizing: border-box;
 }
 
 /* Media Queries */
 @media screen and (max-width: 768px) {
+    .app_body {
+        height: calc(100vh - 80px);
+    }
     .app_body > *:nth-child(2) {
         padding-bottom: 110px;
     }
 }
 
 @media screen and (max-width: 480px) {
+    .app_body {
+        height: calc(100vh - 70px);
+    }
     .app_body > *:nth-child(2) {
         padding-bottom: 100px;
     }

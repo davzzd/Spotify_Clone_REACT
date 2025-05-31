@@ -1,11 +1,13 @@
 .album_page {
     padding: 20px;
-    height: calc(100vh - 180px);
+    height: calc(100vh - 90px);
     overflow-y: auto;
     background: rgba(249, 13, 60, 0.311);
     backdrop-filter: blur(10px);
     border-radius: 10px;
     margin: 10px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
 }
 
 .album_page.loading,
@@ -143,4 +145,23 @@
 
 .album_page::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.4);
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .album_page {
+        width: calc(100% - 16px);
+        padding: 16px;
+        margin: 8px;
+        height: calc(100vh - 80px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .album_page {
+        width: calc(100% - 12px);
+        padding: 12px;
+        margin: 6px;
+        height: calc(100vh - 70px);
+    }
 } 

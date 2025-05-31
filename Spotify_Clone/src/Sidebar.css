@@ -1,11 +1,36 @@
-.sidebar {
+.app .sidebar {
     height: 100%;
     min-width: 230px;
+    max-width: 230px;
     padding: 0 10px;
-    background-color: rgba(173, 19, 45, 0.692);
+    background-color: rgba(228, 53, 82, 0.614);
     backdrop-filter: blur(10px);
     overflow-y: auto;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.mobile_menu_button {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background: rgba(173, 19, 45, 0.692);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.mobile_menu_button:hover {
+    background: rgba(173, 19, 45, 0.8);
+    transform: scale(1.1);
 }
 
 .sidebar__logo {
@@ -43,6 +68,7 @@
 @media screen and (max-width: 768px) {
     .sidebar {
         min-width: 200px;
+        max-width: 200px;
         padding: 0 8px;
     }
 
@@ -53,9 +79,27 @@
 }
 
 @media screen and (max-width: 480px) {
+    .mobile_menu_button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .sidebar {
-        min-width: 180px;
-        padding: 0 5px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1000;
+        transform: translateX(-100%);
+        min-width: 250px;
+        max-width: 250px;
+        padding: 0 10px;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar.mobile_open {
+        transform: translateX(0);
     }
 
     .sidebar__logo {

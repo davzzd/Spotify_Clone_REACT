@@ -1,47 +1,48 @@
 .body {
     padding: 30px;
     width: 100%;
-    height: 100vh;
-    overflow-y: overlay;
-    flex: 0.8;
+    height: 100%;
+    overflow-y: auto;
     color: white;
     background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
     background-size: 180% 180%;
     animation: gradient-animation 18s ease infinite;
-  }
-  
-  .body::-webkit-scrollbar {
+    box-sizing: border-box;
+    position: relative;
+}
+
+.body::-webkit-scrollbar {
     display: none;
-  }
-  
-  .body_info {
+}
+
+.body_info {
     display: flex;
     align-items: flex-end;
     padding: 10px;
-  }
-  
-  .body_shuffle {
+}
+
+.body_shuffle {
     font-size: 80px !important;
     margin-left: 50px;
     margin-top: 20px;
     margin-bottom: 20px;
-  }
-  
-  .body_icons {
+}
+
+.body_icons {
     display: flex;
     align-items: center;
-  }
-  
-  .body_icons > .MuiSvgIcon-root {
+}
+
+.body_icons > .MuiSvgIcon-root {
     margin-right: 20px;
-  }
-  
-  .body_shuffle:hover {
+}
+
+.body_shuffle:hover {
     transition: 100ms transform ease-in;
     transform: scale(1.08);
-  }
-  
-  .body_background {
+}
+
+.body_background {
     position: absolute;
     top: 13vh;
     right: 0;
@@ -49,29 +50,48 @@
     height: 80%;
     width: 80%;
     background-color: black;
-  }
-  
-  .body_songs {
+}
+
+.body_songs {
     z-index: 1;
     margin: 20px -30px;
-  }
-  
-  .body_info > img {
+}
+
+.body_info > img {
     height: 20vw;
     margin: 0 20px;
     box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
-  }
-  
-  .body_infoText {
+}
+
+.body_infoText {
     color: antiquewhite;
     flex: 1;
-  }
-  
-  .body_infoText > h2 {
+}
+
+.body_infoText > h2 {
     font-size: 48px;
     margin-bottom: 10px;
-  }
-  
-  .body_infoText > p {
+}
+
+.body_infoText > p {
     font-size: 14px;
-  }
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .body {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .body {
+        padding: 15px;
+    }
+}
+
+
+
+
+
+
