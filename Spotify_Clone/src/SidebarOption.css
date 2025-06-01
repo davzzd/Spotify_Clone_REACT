@@ -23,7 +23,7 @@
   }
   
   .sidebarOption > p {
-    color: antiquewhite;
+    color: var(--text-header);
     margin-top: 10px;
     margin-left: 20px;
     font-size: 20px;
