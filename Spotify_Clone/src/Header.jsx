@@ -3,12 +3,15 @@ import "./Header.css";
 import SearchIcon from '@mui/icons-material/Search';
 import Avatar from '@mui/material/Avatar';
 import { useDataLayerValue } from './DataLayer';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 function Header({ spotify }) {
     const [{ user }, dispatch] = useDataLayerValue();
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [showResults, setShowResults] = useState(false);
+    const [theme, setTheme] = useState('default');
     const searchRef = useRef(null);
 
     useEffect(() => {
@@ -21,6 +24,17 @@ function Header({ spotify }) {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
+
+    const toggleTheme = () => {
+        const root = document.documentElement;
+        if (theme === 'default') {
+            root.classList.add('theme-alternate');
+            setTheme('alternate');
+        } else {
+            root.classList.remove('theme-alternate');
+            setTheme('default');
+        }
+    };
 
     const handleSearch = async (e) => {
         const value = e.target.value;
@@ -102,6 +116,13 @@ function Header({ spotify }) {
             </div>
 
             <div className='header_right'>
+                <button 
+                    className="theme-toggle-btn"
+                    onClick={toggleTheme}
+                    aria-label="Toggle theme"
+                >
+                    {theme === 'default' ? <Brightness4Icon /> : <Brightness7Icon />}
+                </button>
                 <Avatar src={user?.images[0]?.url} alt={user?.display_name}/>
                 <h4>{user?.display_name}</h4>
             </div>

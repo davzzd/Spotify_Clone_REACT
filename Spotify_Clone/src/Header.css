@@ -180,3 +180,46 @@
         font-size: 11px;
     }
 }
+
+.theme-toggle-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-white);
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle-btn:hover {
+    background: var(--overlay-white);
+    transform: scale(1.1);
+}
+
+.theme-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--overlay-white);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle-btn:active::after {
+    transform: scale(2);
+    opacity: 0;
+}
