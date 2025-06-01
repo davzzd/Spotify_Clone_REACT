@@ -3,8 +3,6 @@ import "./Header.css";
 import SearchIcon from '@mui/icons-material/Search';
 import Avatar from '@mui/material/Avatar';
 import { useDataLayerValue } from './DataLayer';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 function Header({ spotify }) {
     const [{ user }, dispatch] = useDataLayerValue();
@@ -27,13 +25,19 @@ function Header({ spotify }) {
 
     const toggleTheme = () => {
         const root = document.documentElement;
-        if (theme === 'default') {
-            root.classList.add('theme-alternate');
-            setTheme('alternate');
-        } else {
-            root.classList.remove('theme-alternate');
-            setTheme('default');
+        const themes = ['default', 'alternate', 'alternate3', 'alternate4'];
+        const currentIndex = themes.indexOf(theme);
+        const nextIndex = (currentIndex + 1) % themes.length;
+        const nextTheme = themes[nextIndex];
+        
+        // Remove all theme classes
+        themes.forEach(t => root.classList.remove(`theme-${t}`));
+        // Add new theme class
+        if (nextTheme !== 'default') {
+            root.classList.add(`theme-${nextTheme}`);
         }
+        
+        setTheme(nextTheme);
     };
 
     const handleSearch = async (e) => {
@@ -121,7 +125,7 @@ function Header({ spotify }) {
                     onClick={toggleTheme}
                     aria-label="Toggle theme"
                 >
-                    {theme === 'default' ? <Brightness4Icon /> : <Brightness7Icon />}
+                    Press Here
                 </button>
                 <Avatar src={user?.images[0]?.url} alt={user?.display_name}/>
                 <h4>{user?.display_name}</h4>

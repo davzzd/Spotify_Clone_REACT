@@ -113,4 +113,122 @@
     /* Button Colors */
     --button-blue: #3287aede;
     --button-red: #ec2251;
+}
+
+/* Alternate theme 3 variables */
+:root.theme-alternate3 {
+    /* Primary Colors */
+    --primary-color: #4cff64;
+    --primary-color-light: #6bff95;
+    --primary-color-dark: #72ef85;
+    
+    /* Secondary Colors */
+    --secondary-color: #1db954;
+    --secondary-color-light: #1ed760;
+    
+    /* Background Colors */
+    --bg-black: black;
+    --bg-white: white;
+    --bg-transparent: transparent;
+    
+    /* Overlay Colors */
+    --overlay-pink: rgba(200, 255, 182, 0.2);
+    --overlay-pink-light: rgba(188, 255, 182, 0.3);
+    --overlay-pink-dark: rgba(211, 255, 182, 0.4);
+    --overlay-red: rgba(13, 249, 29, 0.311);
+    --overlay-red-light: rgba(52, 249, 13, 0.594);
+    --overlay-red-dark: rgba(49, 239, 7, 0.521);
+    --overlay-white: rgba(255, 255, 255, 0.1);
+    --overlay-white-light: rgba(255, 255, 255, 0.2);
+    --overlay-white-dark: rgba(255, 255, 255, 0.3);
+    --overlay-white-darker: rgba(255, 255, 255, 0.4);
+    --overlay-black: rgba(0, 0, 0, 0.3);
+    --overlay-black-light: rgba(0, 0, 0, 0.2);
+    --overlay-black-dark: rgba(0, 0, 0, 0.5);
+    
+    /* Text Colors */
+    --text-white: white;
+    --text-white-transparent: rgba(255, 255, 255, 0.7);
+    --text-white-transparent-light: rgba(255, 255, 255, 0.8);
+    --text-white-transparent-dark: rgba(255, 255, 255, 0.9);
+    --text-black: #000000;
+    --text-black-transparent: rgba(0, 0, 0, 0.7);
+    --text-gray: #b3b3b3;
+    --text-gray-light: #ffffff;
+    --text-gray-dark: #0a0a0a78;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(300deg, var(--primary-color), var(--primary-color-dark), var(--primary-color-light));
+    --gradient-secondary: linear-gradient(300deg, #00bfff, var(--primary-color), var(--primary-color-dark));
+    
+    /* Sidebar Colors */
+    --sidebar-red: rgba(53, 228, 138, 0.614);
+    --sidebar-red-light: rgba(19, 173, 45, 0.692);
+    --sidebar-red-dark: rgba(19, 173, 101, 0.8);
+    
+    /* Footer Colors */
+    --footer-red: rgba(20, 155, 76, 0.619);
+    
+    /* Button Colors */
+    --button-blue: #3287aede;
+    --button-red: #ec2251;
+}
+
+/* Alternate theme 4 variables */
+:root.theme-alternate4 {
+    /* Primary Colors */
+    --primary-color: #f6ff4c;
+    --primary-color-light: #ffd86b;
+    --primary-color-dark: #efb572;
+    
+    /* Secondary Colors */
+    --secondary-color: #1db954;
+    --secondary-color-light: #1ed760;
+    
+    /* Background Colors */
+    --bg-black: black;
+    --bg-white: white;
+    --bg-transparent: transparent;
+    
+    /* Overlay Colors */
+    --overlay-pink: rgba(255, 182, 193, 0.2);
+    --overlay-pink-light: rgba(255, 182, 193, 0.3);
+    --overlay-pink-dark: rgba(255, 182, 193, 0.4);
+    --overlay-red: rgba(249, 13, 60, 0.311);
+    --overlay-red-light: rgba(249, 13, 60, 0.594);
+    --overlay-red-dark: rgba(239, 7, 61, 0.521);
+    --overlay-white: rgba(255, 255, 255, 0.1);
+    --overlay-white-light: rgba(255, 255, 255, 0.2);
+    --overlay-white-dark: rgba(255, 255, 255, 0.3);
+    --overlay-white-darker: rgba(255, 255, 255, 0.4);
+    --overlay-black: rgba(0, 0, 0, 0.3);
+    --overlay-black-light: rgba(0, 0, 0, 0.2);
+    --overlay-black-dark: rgba(0, 0, 0, 0.5);
+    
+    /* Text Colors */
+    --text-white: white;
+    --text-white-transparent: rgba(255, 255, 255, 0.7);
+    --text-white-transparent-light: rgba(255, 255, 255, 0.8);
+    --text-white-transparent-dark: rgba(255, 255, 255, 0.9);
+    --text-black: #000000;
+    --text-black-transparent: rgba(0, 0, 0, 0.7);
+    --text-gray: #b3b3b3;
+    --text-gray-light: #ffffff;
+    --text-gray-dark: #0a0a0a78;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(300deg, var(--primary-color), var(--primary-color-dark), var(--primary-color-light));
+    --gradient-secondary: linear-gradient(300deg, #00bfff, var(--primary-color), var(--primary-color-dark));
+    
+    /* Sidebar Colors */
+    --sidebar-red: rgba(228, 184, 53, 0.614);
+    --sidebar-red-light: rgba(173, 137, 19, 0.692);
+    --sidebar-red-dark: rgba(173, 170, 19, 0.8);
+    
+    /* Footer Colors */
+    --footer-red: rgba(223, 175, 19, 0.619);
+    
+    /* Button Colors */
+    --button-blue: #3287aede;
+    --button-red: #ec2251;
 } 
