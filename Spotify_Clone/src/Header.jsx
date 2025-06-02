@@ -125,7 +125,7 @@ function Header({ spotify }) {
                     onClick={toggleTheme}
                     aria-label="Toggle theme"
                 >
-                    Press Here
+                    Theme
                 </button>
                 <Avatar src={user?.images[0]?.url} alt={user?.display_name}/>
                 <h4>{user?.display_name}</h4>

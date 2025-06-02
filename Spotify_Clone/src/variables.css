@@ -141,7 +141,7 @@
     --overlay-red-light: rgba(255, 255, 255, 0.15);
     --overlay-red-dark: rgba(255, 255, 255, 0.2);
     --overlay-white: rgba(255, 255, 255, 0.1);
-    --overlay-white-light: rgba(255, 255, 255, 0.15);
+    --overlay-white-light: rgba(18, 17, 17, 0.15);
     --overlay-white-dark: rgba(255, 255, 255, 0.2);
     --overlay-white-darker: rgba(255, 255, 255, 0.25);
     --overlay-black: rgba(0, 0, 0, 0.5);
@@ -195,13 +195,13 @@
     
     /* Overlay Colors */
     --overlay-pink: rgba(89, 43, 139, 0.562);
-    --overlay-pink-light: rgba(0, 0, 0, 0.9);
-    --overlay-pink-dark: rgba(0, 0, 0, 0.98);
+    --overlay-pink-light: rgba(79, 67, 100, 0.9);/*song search background*/
+    --overlay-pink-dark: rgba(172, 147, 192, 0.98);/*search result hover bg*/
     --overlay-red: rgba(0, 0, 0, 0.95);
     --overlay-red-light: rgba(0, 0, 0, 0.9);
     --overlay-red-dark: rgba(0, 0, 0, 0.98);
-    --overlay-white: rgba(0, 0, 0, 0.95);
-    --overlay-white-light: rgba(0, 0, 0, 0.9);
+    --overlay-white: rgba(47, 37, 54, 0.95);
+    --overlay-white-light: rgba(8, 8, 8, 0.9);/*song search result border*/
     --overlay-white-dark: rgba(0, 0, 0, 0.98);
     --overlay-white-darker: rgba(0, 0, 0, 0.99);
     --overlay-black: rgba(0, 0, 0, 0.95);
