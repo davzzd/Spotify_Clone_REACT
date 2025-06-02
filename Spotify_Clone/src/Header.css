@@ -191,21 +191,22 @@
     border-radius: 20px;
     font-size: 14px;
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    transform-origin: center;
 }
 
 .theme-toggle-btn:hover {
     background: var(--overlay-pink-light);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px var(--overlay-black);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px var(--overlay-black);
 }
 
 .theme-toggle-btn:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.95);
     box-shadow: 0 2px 4px var(--overlay-black);
 }
 
@@ -219,7 +220,8 @@
     background: var(--overlay-white);
     border-radius: 20px;
     transform: scale(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.3;
 }
 
 .theme-toggle-btn:active::after {

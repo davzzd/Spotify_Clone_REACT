@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Sidebar.css";
 import SidebarOption from "./SidebarOption";
 import HomeIcon from '@mui/icons-material/Home';
@@ -12,6 +12,23 @@ function Sidebar({ spotify }) {
   const [{ playlists }, dispatch] = useDataLayerValue();
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const sidebarRef = useRef(null);
+  const menuButtonRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMobileMenuOpen && 
+          sidebarRef.current && 
+          !sidebarRef.current.contains(event.target) &&
+          menuButtonRef.current &&
+          !menuButtonRef.current.contains(event.target)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMobileMenuOpen]);
 
   const handleNavigation = (path) => {
     navigate(path);
@@ -38,10 +55,10 @@ function Sidebar({ spotify }) {
 
   return (
     <>
-      <button className="mobile_menu_button" onClick={toggleMobileMenu}>
+      <button className="mobile_menu_button" onClick={toggleMobileMenu} ref={menuButtonRef}>
         <MenuIcon />
       </button>
-      <div className={`sidebar ${isMobileMenuOpen ? 'mobile_open' : ''}`}>
+      <div className={`sidebar ${isMobileMenuOpen ? 'mobile_open' : ''}`} ref={sidebarRef}>
         <img
           className="sidebar__logo"
           src="https://freepnglogo.com/images/all_img/1725820319spotify-logo-black.png"
